@@ -1,0 +1,88 @@
+{
+  "menu": [
+    {
+      "url": "/admin/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "dashboard"
+    },
+    {
+      "menuHeader": "Configuration"
+    },
+    {
+      "url": "/admin/content",
+      "name": "Content",
+      "icon": "menu-icon tf-icons ti ti-album",
+      "slug": "content",
+      "permission": [
+        "view-content"
+      ]
+    },
+    {
+      "url": "/admin/banner",
+      "name": "Banner",
+      "icon": "menu-icon tf-icons ti ti-album",
+      "slug": "banner",
+      "permission": [
+        "view-banner"
+      ]
+    },
+    {
+      "url": "/admin/menu",
+      "name": "Menu",
+      "icon": "menu-icon tf-icons ti ti-album",
+      "slug": "menu",
+      "permission": [
+        "view-menu"
+      ]
+    },
+    {
+      "url": "/admin/grade",
+      "name": "Grade",
+      "icon": "menu-icon tf-icons ti ti-album",
+      "slug": "grade",
+      "permission": [
+        "view-grade"
+      ]
+    },
+    {
+      "url": "/admin/subject",
+      "name": "Subject",
+      "icon": "menu-icon tf-icons ti ti-album",
+      "slug": "subject",
+      "permission": [
+        "view-subject"
+      ]
+    },
+    {
+      "url": "/admin/student",
+      "name": "Student",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "student",
+      "permission": [
+        "view-student"
+      ]
+    },
+    {
+      "menuHeader": "Security"
+    },
+    {
+      "url": "/admin/role",
+      "name": "Role",
+      "icon": "menu-icon tf-icons ti ti-shield-lock",
+      "slug": "role",
+      "permission": [
+        "view-role"
+      ]
+    },
+    {
+      "url": "/admin/admin",
+      "name": "Admin",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "admin",
+      "permission": [
+        "view-admin"
+      ]
+    }
+  ]
+}

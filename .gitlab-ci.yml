@@ -1,0 +1,72 @@
+default:
+  tags:
+    - shell
+stages:
+  - create_env
+  - build
+  - deploy
+
+# variables:
+#   REPOSITORY_URL: 630324286669.dkr.ecr.ap-south-1.amazonaws.com/home-testing.peacenepal.com
+#   TASK_DEFINITION_NAME: metlife-home-testing-taskdefinition
+#   SERVICE_NAME: metlife-home-testing-service
+#   DOCKER_TLS_CERTDIR: "/certs"
+#   task_role_arn: metlife-home-testing_task_role
+#   task_execution_role_arn: metlife-home-testing-task_execution
+
+# before_script:
+#   - IMAGE_TAG="$(echo $CI_COMMIT_SHA | head -c 8)"
+
+# create_env:
+#   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+#   stage: create_env
+#   script:
+#     - cp .env.example .env
+#   artifacts:
+#     untracked: true
+#     expire_in: "1 hours"
+#   only:
+#     - master
+#   tags:
+#     - docker
+
+# build&pushDocker:
+#   stage: build
+#   script:
+#     - echo "Building image..."
+#     - docker build -t $REPOSITORY_URL:latest .
+#     - echo "Tagging image..."
+#     - docker tag $REPOSITORY_URL:latest $REPOSITORY_URL:$IMAGE_TAG
+#     - echo "Pushing image..."
+#     - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 630324286669.dkr.ecr.ap-south-1.amazonaws.com
+#     - docker push $REPOSITORY_URL:latest
+#     - docker push $REPOSITORY_URL:$IMAGE_TAG
+#   only:
+#     - master
+#   tags:
+#     - shell
+
+# ecs_deploy:
+#   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+#   stage: deploy
+#   script:
+#     #deploy to ECS
+#     - echo $REPOSITORY_URL:$IMAGE_TAG
+#     - CLUSTER_NAME="peacenepal-cluster"
+#     - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "$TASK_DEFINITION_NAME" --region "${AWS_DEFAULT_REGION}")
+#     - NEW_CONTAINER_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$REPOSITORY_URL:$IMAGE_TAG" '.taskDefinition.containerDefinitions[0].image = $IMAGE | .taskDefinition.containerDefinitions[0]')
+#     # Registering new container definition...
+#     - aws ecs register-task-definition --region "${AWS_DEFAULT_REGION}" --family "${TASK_DEFINITION_NAME}" --network-mode "awsvpc" --container-definitions "${NEW_CONTAINER_DEFINTIION}" --cpu 1024 --memory 2048 --task-role-arn $task_role_arn --execution-role-arn $task_execution_role_arn --requires-compatibilities "FARGATE"
+#     # Updating the service...
+#     - aws ecs update-service --region "${AWS_DEFAULT_REGION}" --cluster "${CLUSTER_NAME}" --service "${SERVICE_NAME}" --task-definition "${TASK_DEFINITION_NAME}"
+#   only:
+#     - master
+#   tags:
+#     - docker
+
+ec2_deploy_uat:
+  stage: deploy
+  script:
+    - ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOSTNAME "cd /var/www/health-yaad-aayo && git pull origin uat && docker compose up -d --build"
+  only:
+    - uat
