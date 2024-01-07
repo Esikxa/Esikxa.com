@@ -708,14 +708,15 @@ p {
     left: 0;
     right: 0;
     z-index: 10;
-    background: var(--secondary-color);
+    background: var(--bg-color);
     text-align: center;
     max-width: 155px;
     margin: auto;
     padding: 3px 5px;
     border-radius: 50px;
     font-size: 13px;
-    color: var(--white-color);
+    color: var(--secondary-color);
+    box-shadow: 0px 0px 15px rgb(255 105 61 / 78%);
 }
 
 .teachers-content h3 {
@@ -761,6 +762,26 @@ p {
 
 .teachers.pb {
     padding-bottom: 40px;
+}
+
+.request-teacher {
+    margin-top: 15px;
+}
+
+.request-teacher a {
+    display: block;
+    background: var(--secondary-color);
+    color: var(--white-color);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.request-teacher a:hover {
+    background: var(--primary-color);
 }
 
 /* Teachers End  */
@@ -1671,7 +1692,7 @@ p {
     border: 1px solid var(--border-color);
 }
 
-.book-page-main .form-control:focus{
+.book-page-main .form-control:focus {
     outline: none;
     box-shadow: none;
     border-color: var(--primary-color);
@@ -1680,14 +1701,17 @@ p {
 .book-page-main .form-group {
     margin-bottom: 25px;
 }
+
 .book-page-main textarea.form-control {
     height: 150px;
 }
+
 .book-page-sidebar {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     padding: 30px 30px;
 }
+
 .payment-list img {
     height: 50px;
     width: auto;
@@ -1700,26 +1724,32 @@ p {
     align-items: center;
     border-radius: var(--border-radius);
 }
-.payment-list .form-check +.form-check{
-    margin-top:10px;
+
+.payment-list .form-check+.form-check {
+    margin-top: 10px;
 }
+
 .payment-list .form-check-input {
     height: 25px;
     width: 25px;
     margin-left: 0;
-    margin-right:12px;
+    margin-right: 12px;
 }
-.payment-list .form-check-input:focus{
+
+.payment-list .form-check-input:focus {
     outline: none;
     box-shadow: none;
 }
+
 .form-check-input:checked[type=radio] {
     background: var(--white-color);
     border: 7px solid var(--primary-color);
 }
+
 .book-page-sidebar table {
     width: 100%;
 }
+
 .booking-details {
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 25px;
@@ -1737,6 +1767,7 @@ p {
     font-size: 20px;
     white-space: nowrap;
 }
+
 .hidden-form {
     display: none;
 }
@@ -1748,7 +1779,8 @@ p {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
 }
-.hidden-form .form-control:focus{
+
+.hidden-form .form-control:focus {
     outline: none;
     box-shadow: none;
     border-color: var(--primary-color);
@@ -1757,6 +1789,7 @@ p {
 .hidden-form .form-group {
     margin-top: 10px;
 }
+
 /* Booking Page End  */
 
 
@@ -1972,4 +2005,5 @@ p {
     font-size: 18px;
     cursor: pointer;
 }
+
 /* Login Page End  */
