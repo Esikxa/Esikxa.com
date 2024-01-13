@@ -13,8 +13,16 @@ class Student extends Model implements Auditable
 {
     use HasFactory, \OwenIt\Auditing\Auditable, ModelTrait, SoftDeletes;
 
-    protected $fillable = ['uuid', 'user_id', 'grade', 'country', 'institute', 'expected_tution_fee', 'major_subjects', 'preferred_shift', 'preferred_time_start', 'preferred_time_end', 'additional_info', 'accept_term_condition', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['uuid', 'user_id', 'grade_id', 'country_id', 'institute', 'address', 'gender', 'expected_tution_fee', 'major_subjects', 'preferred_shift', 'preferred_time_start', 'preferred_time_end', 'additional_info', 'accept_term_condition', 'status', 'created_by', 'updated_by'];
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function grade(): BelongsTo
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
 
     public function createdBy(): BelongsTo
     {

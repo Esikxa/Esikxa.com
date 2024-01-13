@@ -1,2 +1,1 @@
-# Esikxa.com
-Author- Rakesh Jha
+# tutor

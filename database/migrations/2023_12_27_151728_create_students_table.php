@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('grade')->nullable()->constrained('grades')->onDelete('set null')->onUpdate('cascade');
-            $table->foreignId('country')->nullable()->constrained('countries')->onDelete('set null')->onUpdate('cascade');
+            $table->foreignId('grade_id')->nullable()->constrained('grades')->onDelete('set null')->onUpdate('cascade');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null')->onUpdate('cascade');
+            $table->string('gender')->nullable();
+            $table->string('address')->nullable();
             $table->string('institute')->nullable();
             $table->string('expected_tution_fee')->nullable();
             $table->text('major_subjects')->nullable();

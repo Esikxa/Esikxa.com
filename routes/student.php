@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Student\AuthController;
+use App\Http\Controllers\Frontend\Student\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,5 @@ Route::group(['middleware' => ['guest']], function () {
 
 Route::middleware(['auth:student'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 });

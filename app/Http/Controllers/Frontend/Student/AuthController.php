@@ -80,7 +80,7 @@ class AuthController extends Controller
             return redirect()->route('student.login')->with('success', 'The account has been created successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
+            // dd($th);
             return redirect()->back()->with('error', $th->getMessage());
 
             //throw $th;
@@ -98,11 +98,12 @@ class AuthController extends Controller
         ]);
         $credentials = $request->except(['_token', 'remember']);
         $remember = $request->has('remember') ? true : false;
-        if (Auth::guard('customer')->attempt($credentials, $remember)) {
+
+        if (Auth::guard('student')->attempt($credentials, $remember)) {
             if ($request->hasSession()) {
                 $request->session()->put('auth.password_confirmed_at', time());
             }
-            return redirect()->route('customer.home.index');
+            return redirect()->route('student.dashboard');
         } else {
             return redirect()->back()->withInput()->with('error', trans('auth.failed'));
         }
@@ -120,7 +121,7 @@ class AuthController extends Controller
         }
         return $request->wantsJson()
             ? new JsonResource([], 204)
-            : redirect()->route('customer.login.view')->with('success', $request->message ?? 'You have been logged out!!');
+            : redirect()->route('frontend.student.login.view')->with('success', $request->message ?? 'You have been logged out!!');
     }
 
 
@@ -130,12 +131,12 @@ class AuthController extends Controller
     }
     protected function guard()
     {
-        return Auth::guard('customer');
+        return Auth::guard('student');
     }
 
     public function forgetPasswordView()
     {
-        return view('customer.auth.forget');
+        return view('student.auth.forget');
     }
     public function forgetPassword(Request $request)
     {
@@ -154,7 +155,7 @@ class AuthController extends Controller
         <p>Hello,</p>
         <p>You are receiving this email because we received a password reset request for your account.</p>
         <p>
-            <a href=" . route('customer.reset.password', $token) . ">Click here to reset your password</a>
+            <a href=" . route('student.reset.password', $token) . ">Click here to reset your password</a>
         </p>
         <p>If you did not request a password reset, no further action is required.</p>";
 
@@ -172,7 +173,7 @@ class AuthController extends Controller
         if (!$data) {
             abort(404);
         }
-        return view('customer.auth.reset', ['data' => $data]);
+        return view('student.auth.reset', ['data' => $data]);
     }
 
     public function resetPassword(Request $request, $token)
@@ -197,7 +198,7 @@ class AuthController extends Controller
             ]);
             DB::table('password_reset_tokens')->where('token', $token)->delete();
             DB::commit();
-            return redirect()->route('customer.login.view')->with('success', 'Password reset successfully');
+            return redirect()->route('student.login.view')->with('success', 'Password reset successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Something went wrong, please try again');

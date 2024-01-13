@@ -29,7 +29,7 @@
             <div class="header-wrap">
                 <div class="header-left-bar">
                     <div class="logo">
-                        <a href="index.php">
+                        <a href="{{route('frontend.index')}}">
                             <img src="{{ asset('frontend/img/esikxa-logo.jpg') }}" alt="images">
                         </a>
                     </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="header-btns">
-                        <a href="register.php">Sign Up <i class="las la-arrow-circle-right"></i></a>
+                        <a href="{{route('student.login')}}">Sign Up <i class="las la-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

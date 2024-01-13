@@ -14,11 +14,11 @@ class SubjectSeeder extends Seeder
     public function run(): void
     {
         $grades = [
-            ['title' => 'English'],
-            ['title' => 'Nepali'],
-            ['title' => 'Math'],
-            ['title' => 'Account'],
-            ['title' => 'Economics'],
+            ['title' => 'English','popular' => 1],
+            ['title' => 'Nepali','popular' => 1],
+            ['title' => 'Math','popular' => 1],
+            ['title' => 'Account','popular' => 1],
+            ['title' => 'Economics','popular' => 1],
             ['title' => 'Social Studies']
         ];
 

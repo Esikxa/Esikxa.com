@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(ProvinceSeeder::class);
         $this->call(LayoutOptionSeeder::class);
+        $this->call(GradeSeeder::class);
+        $this->call(SubjectSeeder::class);
+        $this->call(QualificationSeeder::class);
     }
 }

@@ -27,6 +27,9 @@ class SubjectRepository extends Repository
         if ($request->has('status')) {
             $dataProvider = $dataProvider->where('status', $request->status);
         }
+        if ($request->has('popular')) {
+            $dataProvider = $dataProvider->where('popular', $request->popular);
+        }
         $dataProvider = $dataProvider->orderBy($orderBy, $sort);
         if ($paginate) {
             $dataProvider = $dataProvider->paginate($limit);
