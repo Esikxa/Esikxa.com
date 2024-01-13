@@ -251,6 +251,9 @@
                             <h3><a href="single-teacher.php">Rakesh Jha</a></h3>
                             <p>Physics Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Janakpur Dham</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -266,6 +269,9 @@
                             <h3><a href="single-teacher.php">Sagar Basnet</a></h3>
                             <p>Biology Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Hetauda</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -281,6 +287,9 @@
                             <h3><a href="single-teacher.php">Surya Yadav</a></h3>
                             <p>Chemistry Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Kathmandu</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -296,6 +305,9 @@
                             <h3><a href="single-teacher.php">Amit Kumar</a></h3>
                             <p>Science Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Pokhara</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,6 +323,9 @@
                             <h3><a href="single-teacher.php">Rakesh Jha</a></h3>
                             <p>Physics Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Janakpur Dham</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -326,6 +341,9 @@
                             <h3><a href="single-teacher.php">Sagar Basnet</a></h3>
                             <p>Biology Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Hetauda</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,6 +359,9 @@
                             <h3><a href="single-teacher.php">Surya Yadav</a></h3>
                             <p>Chemistry Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Kathmandu</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -356,6 +377,9 @@
                             <h3><a href="single-teacher.php">Amit Kumar</a></h3>
                             <p>Science Master Teacher</p>
                             <b><i class="las la-map-marker-alt"></i> Pokhara</b>
+                            <div class="request-teacher">
+                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
