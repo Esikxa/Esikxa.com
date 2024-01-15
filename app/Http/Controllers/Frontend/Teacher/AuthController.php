@@ -42,7 +42,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:users,email,3,type',
+            'email' => 'required|email|unique:users,email,2,type',
             'first_name' => 'required',
             'last_name' => 'required',
             'mobile' => 'required|digits:10|unique:users,mobile,3,type'
@@ -66,23 +66,25 @@ class AuthController extends Controller
                 $teacher_data = [
                     'user_id' => $user->id,
                     'grade' => $request->grade,
-                    'country' => $request->country,
+                    'date_of_birth' => $request->date_of_birth,
                     'institute' => $request->institute,
+                    'introduction' => $request->introduction,
                     'expected_tution_fee' => $request->expected_tution_fee,
-                    'major_subjects' => json_encode($request->major_subjects),
+                    'teaching_grade' => json_encode($request->teaching_grade),
+                    'preferred_subjects' => json_encode($request->preferred_subjects),
                     'preferred_shift' => $request->preferred_shift,
                     'preferred_time_start' => $request->preferred_time_start,
                     'preferred_time_end' => $request->preferred_time_end,
-                    'additional_info' => $request->additional_info,
-                    'accept_term_condition' => $request->accept_term_condition,
+                    'introduction' => $request->introduction,
+                    'accept_term_condition' => $request->accept_term_condition ?? 1,
                 ];
                 Teacher::create($teacher_data);
             }
             DB::commit();
-            return redirect()->route('login')->with('success', 'The account has been created successfully');
+            return redirect()->route('teacher.login')->with('success', 'The account has been created successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
-            // dd($th);
+            dd($th);
             return redirect()->back()->with('error', $th->getMessage());
 
             //throw $th;
@@ -90,22 +92,22 @@ class AuthController extends Controller
     }
     public function loginView(Request $request)
     {
-        return view('frontend.auth.login');
+        return view('frontend.teacher.auth.login');
     }
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email|exists:users,email,type,3,status,1',
+            'email' => 'required|email|exists:users,email,type,2,status,1',
             'password' => 'required|min:6'
         ]);
         $credentials = $request->except(['_token', 'remember']);
         $remember = $request->has('remember') ? true : false;
 
-        if (Auth::guard('student')->attempt($credentials, $remember)) {
+        if (Auth::guard('teacher')->attempt($credentials, $remember)) {
             if ($request->hasSession()) {
                 $request->session()->put('auth.password_confirmed_at', time());
             }
-            return redirect()->route('dashboard');
+            return redirect()->route('teacher.dashboard');
         } else {
             return redirect()->back()->withInput()->with('error', trans('auth.failed'));
         }

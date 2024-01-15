@@ -12,7 +12,7 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>@yield('title') |
-        {{ config('app.name') }}</title>
+        {{ config('settings.site_name') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="{{ config('variables.templateDescription') ? config('variables.templateDescription') : '' }}" />
@@ -23,7 +23,7 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
     <!-- Favicon -->
-   <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . config('settings.favicon')) }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . config('settings.favicon')) }}" />
 
     <!-- Include Styles -->
     @include('admin/layouts/sections/styles')
@@ -45,7 +45,7 @@
     <!-- Include Scripts -->
     @include('admin/layouts/sections/scripts')
     @include('admin/layouts/sections/toast')
-  @stack('scripts')
+    @stack('scripts')
 
 </body>
 

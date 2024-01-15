@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    public function dashboard(Request $request)
+    {
+        return view('frontend.teacher.pages.dashboard');
+    }
 }

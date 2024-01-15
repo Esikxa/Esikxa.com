@@ -16,6 +16,7 @@ use App\Models\RolePermission;
 use App\Models\OtpList;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Teacher;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Observers\BannerObserver;
@@ -32,6 +33,7 @@ use App\Observers\RolePermissionObserver;
 use App\Observers\OtpListObserver;
 use App\Observers\StudentObserver;
 use App\Observers\SubjectObserver;
+use App\Observers\TeacherObserver;
 use App\Observers\UserObserver;
 use App\Observers\UserRoleObserver;
 use Illuminate\Support\ServiceProvider;
@@ -70,13 +72,14 @@ class AppServiceProvider extends ServiceProvider
         Grade::observe(GradeObserver::class);
         Subject::observe(SubjectObserver::class);
         Student::observe(StudentObserver::class);
+        Teacher::observe(TeacherObserver::class);
 
         if ($this->app->environment('production') || $this->app->environment('uat')) {
             URL::forceScheme('https');
         }
 
         view()->composer(
-            ['frontend.layout.partials.header', 'frontend.layout.partials.footer','frontend.student.layouts.header'],
+            ['frontend.layout.partials.header', 'frontend.layout.partials.footer', 'frontend.student.layouts.header','frontend.teacher.layouts.header'],
             'App\Http\ViewComposers\Frontend\AppComposer'
         );
     }

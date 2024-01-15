@@ -35,7 +35,8 @@
                                     'height' => 20,
                                     'withbg' => 'fill: #fff;',
                                 ])</span>
-                                <span class="app-brand-text demo text-body fw-bold">{{ config('app.name') }}</span>
+                                <span
+                                    class="app-brand-text demo text-body fw-bold">{{ config('settings.site_name') }}</span>
                             </a>
                         </div>
                         <!-- /Logo -->

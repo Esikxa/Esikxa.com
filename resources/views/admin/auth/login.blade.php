@@ -37,11 +37,11 @@
                                     <img style="width: 100px; margin-top: 10px;"
                                         src="{{ asset('storage/' . config('settings.logo')) }}" alt="login image">
                                 </span>
-                                {{-- <span class="app-brand-text demo text-body fw-bold ms-1">{{ config('app.name') }}</span> --}}
+                                {{-- <span class="app-brand-text demo text-body fw-bold ms-1">{{ config('settings.site_name') }}</span> --}}
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-1 pt-2">Welcome to {{ config('app.name') }}! 👋</h4>
+                        <h4 class="mb-1 pt-2">Welcome to {{ config('settings.site_name') }}! 👋</h4>
                         <p class="mb-4">Please sign-in to your account</p>
 
                         <form id="formAuthentication" class="mb-3" action="" method="POST">

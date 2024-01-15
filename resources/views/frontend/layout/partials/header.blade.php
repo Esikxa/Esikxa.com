@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') |
-        {{ config('app.name') }}</title>
+        {{ config('settings.site_name') }}</title>
     <link rel="icon" type="image/ico" href="{{ asset('storage/' . config('settings.favicon')) }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/metisMenu.min.css') }}">

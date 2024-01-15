@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <div class="form-option-col">
-                            <a href="teacher.php">
+                            <a href="{{ route('teacher.register') }}">
                                 <div class="form-option-icon">
                                     <img src="{{ asset('frontend/img/teacher.png') }}" alt="images">
                                 </div>
@@ -86,7 +86,7 @@
     @if (isset($blocks) && isset($blocks['block-1']) && isset($blocks['block-1']['value']))
         {!! $blocks['block-1']['value'] !!}
     @endif
-   
+
     {{-- <section class="information-section mb">
         <div class="container">
             <div class="information-wrap">

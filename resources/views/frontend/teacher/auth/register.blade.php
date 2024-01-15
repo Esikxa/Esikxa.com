@@ -181,15 +181,15 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="accept_term_condition" name="accept_term_condition" value="1">
+                                <label class="form-check-label" for="accept_term_condition">
                                     I have read and I agree to the Terms and conditions and Privacy Policy
                                 </label>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-btn">
-                                <button type="submit" class="btns">Register Now <i
+                                <button type="submit" class="btns" id="submit-btn">Register Now <i
                                         class="las la-angle-double-right"></i></button>
                             </div>
                         </div>

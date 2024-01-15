@@ -76,11 +76,12 @@ class UserObserver
                     $prefix = ConstantHelper::ADMIN_CODE_PREFIX;
                     break;
                 case 2:
-                    $prefix = ConstantHelper::STUDENT_CODE_PREFIX;
-                    break;
-                case 3:
                     $prefix = ConstantHelper::TEACHER_CODE_PREFIX;
                     break;
+                case 3:
+                    $prefix = ConstantHelper::STUDENT_CODE_PREFIX;
+                    break;
+
                 default:
                     $prefix = 'US-';
                     break;
@@ -100,5 +101,4 @@ class UserObserver
             return $prefix . $count;
         });
     }
-  
 }

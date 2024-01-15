@@ -14,7 +14,7 @@ class EmailHelper
         $senderEmail = env('MAIL_FROM_ADDRESS', 'nareshkumar.khasu@peacenepal.com.np');
         $senderName = env('MAIL_FROM_NAME', 'Health Yaad Aayo');
         $sitePath = route('frontend.index');
-        $siteName = config('app.name');
+        $siteName = config('settings.site_name');
 
         $data = array(
             'logopath' => $logo,

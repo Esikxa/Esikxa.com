@@ -1,5 +1,5 @@
 @extends('frontend.layout.app')
-@section('title', 'Student Login')
+@section('title', 'Teacher Login')
 @section('content')
     @include('admin._partials.alert')
     <section class="auth-page">
@@ -15,13 +15,13 @@
         </div>
         <div class="auth-body-content">
             <div class="auth-card">
-                <h3>Student Login</h3>
+                <h3>Teacher Login</h3>
                 <div class="auth-card-body">
                     <div class="auth-card-head">
                         <img src="{{ asset('storage/' . config('settings.logo')) }}" alt="Logo">
                         <h3>Please Login Here</h3>
                     </div>
-                    <form action="" method="POST">
+                    <form action="{{route('teacher.login')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="">Email</label>
@@ -50,8 +50,8 @@
                     </form>
                 </div>
                 <div class="auth-card-footer">
-                    <p>Don't have an account ? <a href="{{ route('student.register') }}">Sign Up</a> to
-                        {{ config('app.name') }}</p>
+                    <p>Don't have an account ? <a href="{{ route('teacher.register') }}">Sign Up</a> to
+                        {{ config('settings.site_name') }}</p>
                 </div>
             </div>
         </div>

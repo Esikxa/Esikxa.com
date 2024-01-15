@@ -51,7 +51,7 @@
                 </div>
                 <div class="auth-card-footer">
                     <p>Don't have an account ? <a href="{{ route('student.register') }}">Sign Up</a> to
-                        {{ config('app.name') }}</p>
+                        {{ config('settings.site_name') }}</p>
                 </div>
             </div>
         </div>
