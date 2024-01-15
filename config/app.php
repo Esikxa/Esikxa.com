@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\SiteSettingProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -172,7 +173,7 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
 
-
+        App\Providers\SiteSettingProvider::class,
     ])->toArray(),
 
     /*
@@ -194,9 +195,6 @@ return [
         'MediaHelper' => App\Helpers\MediaHelper::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'CommonHelper' => App\Helpers\CommonHelper::class,
-        'ClientHelper' => App\Helpers\ClientHelper::class,
-        'HomeTestingHelper' => App\Helpers\HomeTestingHelper::class
-
     ])->toArray(),
 
 ];

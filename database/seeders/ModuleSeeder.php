@@ -212,6 +212,32 @@ class ModuleSeeder extends Seeder
                         'title' => 'Change Status Subject'
                     ]
                 ]
+            ],
+            [
+                'title' => 'Site Setting',
+                'permissions' => [
+                    [
+
+                        'title' => 'View Site Setting'
+                    ],
+                    [
+                        'title' => 'Edit Site Setting'
+                    ],
+
+                ]
+            ],
+            [
+                'title' => 'Layout Option',
+                'permissions' => [
+                    [
+
+                        'title' => 'View Layout Option'
+                    ],
+                    [
+                        'title' => 'Edit Layout Option'
+                    ],
+
+                ]
             ]
         ];
         $dbModules = Module::pluck('title')->toArray();

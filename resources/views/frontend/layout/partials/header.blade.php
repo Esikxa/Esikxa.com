@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') |
         {{ config('app.name') }}</title>
-    <link rel="icon" type="image/ico" href="{{ asset('frontend/img/favicon.png') }}">
+    <link rel="icon" type="image/ico" href="{{ asset('storage/' . config('settings.favicon')) }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -29,8 +29,8 @@
             <div class="header-wrap">
                 <div class="header-left-bar">
                     <div class="logo">
-                        <a href="{{route('frontend.index')}}">
-                            <img src="{{ asset('frontend/img/esikxa-logo.jpg') }}" alt="images">
+                        <a href="{{ route('frontend.index') }}">
+                            <img src="{{ asset('storage/' . config('settings.logo')) }}" alt="images">
                         </a>
                     </div>
                     <div class="header-menus">
@@ -53,11 +53,11 @@
                         </div>
                         <div class="header-call-info">
                             <span>Talk to our experts</span>
-                            <h3><a href="tel:+977 123 456 789">+977 123 456 789</a></h3>
+                            <h3><a href="tel:{!! config('settings.phone_number') !!}">{!! config('settings.phone_number') !!}</a></h3>
                         </div>
                     </div>
                     <div class="header-btns">
-                        <a href="{{route('student.login')}}">Sign Up <i class="las la-arrow-circle-right"></i></a>
+                        <a href="{{ route('student.login') }}">Sign Up <i class="las la-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

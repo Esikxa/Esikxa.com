@@ -7,19 +7,19 @@
                     <div class="footer-content">
                         <div class="footer-logo">
                             <a href="index.php">
-                                <img src="{{asset('frontend/img/esikxa-logo.jpg')}}" alt="Logo">
+                                <img src="{{ asset('storage/' . config('settings.logo')) }}" alt="Logo">
                             </a>
                         </div>
                         <p>
-                            Whal have much planned for the future, working with great clients and continued software
-                            development. If you'd like to join our team.
+                            {!! config('settings.short_introduction') !!}
                         </p>
                         <ul>
-                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                            <li><a href="#"><i class="lab la-linkedin"></i></a></li>
-                            <li><a href="#"><i class="lab la-youtube"></i></a></li>
+
+                            <li><a href="{!! config('settings.facebook') !!}"><i class="lab la-facebook-f"></i></a></li>
+                            <li><a href="{!! config('settings.twitter') !!}"><i class="lab la-twitter"></i></a></li>
+                            <li><a href="{!! config('settings.instagram') !!}"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="{!! config('settings.linkedin') !!}"><i class="lab la-linkedin"></i></a></li>
+                            <li><a href="{!! config('settings.youtube') !!}"><i class="lab la-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -43,16 +43,16 @@
                     <div class="footer-col space2">
                         <h3>Our Supports</h3>
                         @if (isset($widget2) && !empty($widget2))
-                        <ul>
-                            @foreach ($widget2['parent'] as $item)
-                                @if (isset($item['title']) && !empty($item['title']))
-                                    <li><a href="{{ isset($item['url']) ? $item['url'] : '' }}"
-                                            {{ isset($item['target']) && !empty($item['target']) ? 'target="_blank"' : '' }}>{!! $item['title'] !!}</a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    @endif
+                            <ul>
+                                @foreach ($widget2['parent'] as $item)
+                                    @if (isset($item['title']) && !empty($item['title']))
+                                        <li><a href="{{ isset($item['url']) ? $item['url'] : '' }}"
+                                                {{ isset($item['target']) && !empty($item['target']) ? 'target="_blank"' : '' }}>{!! $item['title'] !!}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3">

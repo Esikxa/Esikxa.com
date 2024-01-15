@@ -41,6 +41,7 @@ class LayoutOptionSeeder extends Seeder
                 'title' => 'Block 1',
                 'slug' => 'block-1',
                 'type' => '2',
+                'value' => ''
             ],
             [
                 'title' => 'Block 2',

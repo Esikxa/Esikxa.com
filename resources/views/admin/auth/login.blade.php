@@ -35,7 +35,7 @@
                             <a href="{{ url('/') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo" style="width: 100px; height:45px;">
                                     <img style="width: 100px; margin-top: 10px;"
-                                        src="{{ asset('frontend/img/esikxa-logo.jpg') }}" alt="login image">
+                                        src="{{ asset('storage/' . config('settings.logo')) }}" alt="login image">
                                 </span>
                                 {{-- <span class="app-brand-text demo text-body fw-bold ms-1">{{ config('app.name') }}</span> --}}
                             </a>

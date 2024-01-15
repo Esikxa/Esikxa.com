@@ -83,6 +83,24 @@
       "permission": [
         "view-admin"
       ]
+    },
+    {
+      "url": "/admin/layout-option",
+      "name": "Layout option",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "slug": "layout-option",
+      "permission": [
+        "view-layout-option"
+      ]
+    },
+    {
+      "url": "/admin/site-setting",
+      "name": "Site Setting",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "slug": "site-setting",
+      "permission": [
+        "view-site-setting"
+      ]
     }
   ]
 }

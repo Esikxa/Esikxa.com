@@ -114,16 +114,16 @@ class AuthController extends Controller
     {
         $this->guard()->logout();
 
-        $request->session()->invalidate();
+        // $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+        // $request->session()->regenerateToken();
 
-        if ($response = $this->loggedOut($request)) {
-            return $response;
-        }
+        // if ($response = $this->loggedOut($request)) {
+        //     return $response;
+        // }
         return $request->wantsJson()
             ? new JsonResource([], 204)
-            : redirect()->route('frontend.login.view')->with('success', $request->message ?? 'You have been logged out!!');
+            : redirect()->route('teacher.login')->with('success', $request->message ?? 'You have been logged out!!');
     }
 
 

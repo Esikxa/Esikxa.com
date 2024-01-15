@@ -76,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         view()->composer(
-            ['frontend.layout.partials.header', 'frontend.layout.partials.footer'],
+            ['frontend.layout.partials.header', 'frontend.layout.partials.footer','frontend.student.layouts.header'],
             'App\Http\ViewComposers\Frontend\AppComposer'
         );
     }

@@ -1,5 +1,5 @@
 @extends('frontend.layout.app')
-@section('title','Home')
+@section('title', 'Home')
 @section('content')
     <!-- Slider  -->
     <section class="slider">
@@ -28,7 +28,7 @@
                 <div class="col-lg-2">
                     <div class="form-option">
                         <div class="form-option-col">
-                            <a href="{{route('student.register')}}">
+                            <a href="{{ route('student.register') }}">
                                 <div class="form-option-icon">
                                     <img src="{{ asset('frontend/img/student.png') }}" alt="images">
                                 </div>
@@ -65,28 +65,29 @@
             </div>
             <div class="subject-carousel">
                 @foreach ($subjects as $item)
-                <div class="subject-slide">
-                    <a href="#">
-                        <div class="subject-icon">
-                            <img src="{{$item->icon ? $item->icon : asset('frontend/img/s1.webp')}}" alt="images">
-                        </div>
-                        <div class="subject-info">
-                            <span>{{$item->title}}</span>
-                        </div>
-                    </a>
-                </div> 
+                    <div class="subject-slide">
+                        <a href="#">
+                            <div class="subject-icon">
+                                <img src="{{ $item->icon ? $item->icon : asset('frontend/img/s1.webp') }}" alt="images">
+                            </div>
+                            <div class="subject-info">
+                                <span>{{ $item->title }}</span>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
-                
+
             </div>
         </div>
     </section>
     <!-- Popular Subject End  -->
 
     <!-- Information Section  -->
-    {{-- @if (isset($blocks) && isset($blocks['block-1']) && isset($blocks['block-1']['value']))
+    @if (isset($blocks) && isset($blocks['block-1']) && isset($blocks['block-1']['value']))
         {!! $blocks['block-1']['value'] !!}
-    @endif --}}
-    <section class="information-section mb">
+    @endif
+   
+    {{-- <section class="information-section mb">
         <div class="container">
             <div class="information-wrap">
                 <h3>We take tutoring personally </h3>
@@ -113,13 +114,13 @@
         <div class="information-images">
             <img src="http://127.0.0.1:8000/frontend/img/information.webp" alt="images">
         </div>
-    </section>
+    </section> --}}
     <!-- Information Section End  -->
 
     <!-- Why Choose Us  -->
     @if (isset($blocks) && isset($blocks['block-2']) && isset($blocks['block-2']['value']))
-    {!! $blocks['block-2']['value'] !!}
-@endif
+        {!! $blocks['block-2']['value'] !!}
+    @endif
     <!-- Why Choose US End  -->
 
     <!-- Teachers  -->
@@ -288,24 +289,24 @@
             </div>
             <div class="teacher-carousel">
                 @foreach ($students as $item)
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="{{asset('frontend/img/d1.jpg')}}" alt="images">
-                            </a>
-                            <span>{{$item?->grade?->title}}</span>
-                        </div>
-                        <div class="teachers-content">
-                            <h3><a href="single-teacher.php">{{$item->user->full_name}}</a></h3>
-                            <p>{{$item->institute}}</p>
-                            <b><i class="las la-map-marker-alt"></i> {{$item->address}}</b>
-                            
+                    <div class="teacher-slide">
+                        <div class="teachers-wrap">
+                            <div class="teachers-img">
+                                <a href="single-teacher.php">
+                                    <img src="{{ asset('frontend/img/d1.jpg') }}" alt="images">
+                                </a>
+                                <span>{{ $item?->grade?->title }}</span>
+                            </div>
+                            <div class="teachers-content">
+                                <h3><a href="single-teacher.php">{{ $item->user->full_name }}</a></h3>
+                                <p>{{ $item->institute }}</p>
+                                <b><i class="las la-map-marker-alt"></i> {{ $item->address }}</b>
+
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-                
+
             </div>
         </div>
     </section>

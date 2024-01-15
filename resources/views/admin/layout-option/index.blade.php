@@ -14,7 +14,7 @@
 @section('page-script')
     <script src="{{ asset('assets/js/extended-ui-blockui.js') }}"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/super-build/ckeditor.js"></script> --}}
-    
+
 @endsection
 @section('content')
     @include('admin._partials.alert')
@@ -88,10 +88,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mb-2">
+        @can('admin-access-policy.perform', 'edit-layout-option')
 
-            <button type="submit" name="submitButton" class="btn btn-primary btn-page-block-custom">Submit</button>
-        </div>
-    </form>
+            <div class="col-md-12 mb-2">
 
-@endsection
+                <button type="submit" name="submitButton" class="btn btn-primary btn-page-block-custom">Submit</button>
+            </div>
+            @endif
+        </form>
+
+    @endsection

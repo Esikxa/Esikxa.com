@@ -23,7 +23,7 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
     <!-- Favicon -->
-   <link rel="icon" type="image/x-icon" href="{{ asset('customer/images/favicon.ico') }}" />
+   <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . config('settings.favicon')) }}" />
 
     <!-- Include Styles -->
     @include('admin/layouts/sections/styles')

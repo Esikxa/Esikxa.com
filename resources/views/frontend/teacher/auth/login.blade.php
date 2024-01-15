@@ -18,7 +18,7 @@
                 <h3>Student Login</h3>
                 <div class="auth-card-body">
                     <div class="auth-card-head">
-                        <img src="{{asset('frontend/img/esikxa-logo.jpg')}}" alt="Logo">
+                        <img src="{{ asset('storage/' . config('settings.logo')) }}" alt="Logo">
                         <h3>Please Login Here</h3>
                     </div>
                     <form action="" method="POST">
@@ -50,7 +50,8 @@
                     </form>
                 </div>
                 <div class="auth-card-footer">
-                    <p>Don't have an account ? <a href="{{route('student.register')}}">Sign Up</a> to {{config('app.name')}}</p>
+                    <p>Don't have an account ? <a href="{{ route('student.register') }}">Sign Up</a> to
+                        {{ config('app.name') }}</p>
                 </div>
             </div>
         </div>

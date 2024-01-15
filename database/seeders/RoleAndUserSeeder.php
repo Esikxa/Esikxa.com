@@ -52,5 +52,39 @@ class RoleAndUserSeeder extends Seeder
                 }
             }
         }
+        $roles = [
+            [
+                'id' => 2,
+                'title' => 'Admin',
+
+            ]
+        ];
+        $userList = [
+            ['code' => 'AD-0000002', 'first_name' => 'Admin', 'username' => 'admin@mail.com', 'email' => 'admin@mail.com', 'password' => Hash::make('password'), 'type' => 1, 'email_verfified' => 1, 'email_verified_at' => now()]
+        ];
+        $users = User::get()->pluck('email')->toArray();
+
+        foreach ($roles as $role) {
+            Role::updateOrCreate(['id' => $role['id']], $role);
+            RolePermission::where('role_id', $role['id'])->delete();
+            $permissions = Permission::pluck('id')->toarray();
+            if ($permissions && is_array($permissions) && !empty($permissions)) {
+                foreach ($permissions as $permission) {
+                    $data  = RolePermission::create([
+                        'role_id' => $role['id'],
+                        'permission_id' => $permission
+                    ]);
+                }
+            }
+            foreach ($userList as $data) {
+                if (!in_array($data['email'], $users)) {
+                    $user = User::create($data);
+                    UserRole::create([
+                        'user_id' => $user->id,
+                        'role_id' => $role['id'],
+                    ]);
+                }
+            }
+        }
     }
 }

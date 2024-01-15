@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::resource('banner', 'BannerController');
     Route::resource('layout-option', 'LayoutOptionController');
+    Route::resource('site-setting', 'SiteSettingController');
 
     Route::prefix('menu')->group(function () {
         Route::get('/change-status/{id}', ['uses' => 'MenuController@changeStatus', 'as' => 'menu.change-status']);

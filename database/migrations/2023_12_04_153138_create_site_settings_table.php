@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('type');
+            $table->string('title');
+            $table->string('slug');
+            $table->string('excerpt')->nullable();
+            $table->text('value')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->timestamps(6);
+            $table->softDeletes('deleted_at', 6);
         });
     }
 

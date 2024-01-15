@@ -12,7 +12,7 @@
                 <img style="width: 38px; margin-top: 10px;" src="{{ asset('customer/images/backend-l.png') }}" alt="login image">
             </span> --}}
                 <span class="app-brand-text demo menu-text fw-bold"><img style="width: 120px; margin-top: 10px;"
-                        src="{{ asset('frontend/img/esikxa-logo.jpg') }}" alt="login image"></span>
+                        src="{{ asset('storage/' . config('settings.logo')) }}" alt="login image"></span>
             </a>
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
                 <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
