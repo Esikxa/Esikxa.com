@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
+Route::get('/profile/teacher/{slug}', [HomeController::class, 'teacherProfile'])->name('frontend.teacher.profile');
+Route::get('/teachers', [HomeController::class, 'teacherList'])->name('frontend.teacher.list');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('{page?}/{slug}', [ContentController::class, 'show'])->name('frontend.content.show')->where('page', '^(?!.*admin).*$');

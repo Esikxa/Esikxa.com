@@ -29,4 +29,5 @@ Route::group(['middleware' => ['guest']], function () {
 Route::middleware(['auth:student'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('request-tutor/{slug}', [HomeController::class, 'requestTutor'])->name('request-tutor');
 });

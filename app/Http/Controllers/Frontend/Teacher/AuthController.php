@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Teacher;
 
 use App\Helpers\ConstantHelper;
 use App\Helpers\EmailHelper;
+use App\Helpers\MediaHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Grade;
@@ -47,7 +48,6 @@ class AuthController extends Controller
             'last_name' => 'required',
             'mobile' => 'required|digits:10|unique:users,mobile,3,type'
         ]);
-        // dd($request->all());
         try {
             DB::beginTransaction();
             $user_data = [
@@ -68,16 +68,27 @@ class AuthController extends Controller
                     'grade' => $request->grade,
                     'date_of_birth' => $request->date_of_birth,
                     'institute' => $request->institute,
-                    'introduction' => $request->introduction,
+                    'additional_info' => $request->additional_info,
                     'expected_tution_fee' => $request->expected_tution_fee,
                     'teaching_grade' => json_encode($request->teaching_grade),
                     'preferred_subjects' => json_encode($request->preferred_subjects),
                     'preferred_shift' => $request->preferred_shift,
                     'preferred_time_start' => $request->preferred_time_start,
                     'preferred_time_end' => $request->preferred_time_end,
-                    'introduction' => $request->introduction,
+                    'major_subject' => $request->major_subject,
+                    'teaching_experience' => $request->teaching_experience,
+                    'qualification_id' => $request->qualification_id,
+                    'address' => $request->address,
                     'accept_term_condition' => $request->accept_term_condition ?? 1,
                 ];
+                if ($request->hasFile('certificate')) {
+                    $filelocation = MediaHelper::upload($request->file('certificate'), 'teacher', false);
+                    $teacher_data['certificate'] = $filelocation['storage'];
+                }
+                if ($request->hasFile('citizenship')) {
+                    $filelocation = MediaHelper::upload($request->file('citizenship'), 'teacher', false);
+                    $teacher_data['citizenship'] = $filelocation['storage'];
+                }
                 Teacher::create($teacher_data);
             }
             DB::commit();

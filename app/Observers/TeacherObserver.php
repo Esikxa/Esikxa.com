@@ -7,12 +7,26 @@ use Illuminate\Support\Str;
 
 class TeacherObserver
 {
+    protected $teacher;
+    public function __construct(Teacher $teacher)
+    {
+        $this->teacher = $teacher;
+    }
+    public function generateSlug($teacher)
+    {
+        $slug = Str::slug($teacher->user->full_name);
+        if (Teacher::where('slug', $slug)->exists()) {
+            $slug = $slug.'-' . Str::random(5);
+        }
+        return $slug;
+    }
     /**
      * Handle the Teacher "creating" event.
      */
     public function creating(Teacher $teacher): void
     {
         $teacher->uuid = Str::uuid();
+        $teacher->slug = $this->generateSlug($teacher);
     }
     /**
      * Handle the Teacher "created" event.

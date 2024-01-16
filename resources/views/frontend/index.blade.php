@@ -1,6 +1,8 @@
 @extends('frontend.layout.app')
 @section('title', 'Home')
 @section('content')
+    @include('admin._partials.alert')
+
     <!-- Slider  -->
     <section class="slider">
         <div class="container">
@@ -131,150 +133,31 @@
                 <a href="#">View all teachers <i class="las la-arrow-circle-right"></i></a>
             </div>
             <div class="teacher-carousel">
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t1.jpg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>4+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Rakesh Jha</a></h3>
-                            <p>Physics Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Janakpur Dham</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
+                @foreach ($teachers as $item)
+                    <div class="teacher-slide">
+                        <div class="teachers-wrap">
+                            <div class="teachers-img">
+                                <a href="{{ route('frontend.teacher.profile', $item->slug) }}">
+                                    <img src="{{ $item->user->avatar ? '' : asset('frontend/dashboard/assets/img/faces/default.jpg') }}"
+                                        alt="images">
+                                </a>
+                            </div>
+                            <div class="teachers-content">
+                                <span>{{ App\Models\Teacher::TEACHING_EXPERIENCE[$item->teaching_experience] }}</span>
+                                <h3><a
+                                        href="{{ route('frontend.teacher.profile', $item->slug) }}">{{ $item?->user?->full_name }}</a>
+                                </h3>
+                                <p>{{ $item?->qualification?->title }}</p>
+                                <b><i class="las la-map-marker-alt"></i> {{ $item->address }}</b>
+                                <div class="request-teacher">
+                                    <a href="{{ route('student.request-tutor', $item->slug) }}" tabindex="0">Request a
+                                        Tutor</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t2.webp" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>3+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Sagar Basnet</a></h3>
-                            <p>Biology Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Hetauda</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t3.jpg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>1+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Surya Yadav</a></h3>
-                            <p>Chemistry Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Kathmandu</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t4.jpeg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>5+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Amit Kumar</a></h3>
-                            <p>Science Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Pokhara</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t1.jpg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>4+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Rakesh Jha</a></h3>
-                            <p>Physics Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Janakpur Dham</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t2.webp" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>3+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Sagar Basnet</a></h3>
-                            <p>Biology Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Hetauda</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t3.jpg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>1+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Surya Yadav</a></h3>
-                            <p>Chemistry Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Kathmandu</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-slide">
-                    <div class="teachers-wrap">
-                        <div class="teachers-img">
-                            <a href="single-teacher.php">
-                                <img src="img/t4.jpeg" alt="images">
-                            </a>
-                        </div>
-                        <div class="teachers-content">
-                            <span>5+ Years Experience</span>
-                            <h3><a href="single-teacher.php">Amit Kumar</a></h3>
-                            <p>Science Master Teacher</p>
-                            <b><i class="las la-map-marker-alt"></i> Pokhara</b>
-                            <div class="request-teacher">
-                                <a href="register.php" tabindex="0">Request a Tutor</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -292,13 +175,14 @@
                     <div class="teacher-slide">
                         <div class="teachers-wrap">
                             <div class="teachers-img">
-                                <a href="single-teacher.php">
-                                    <img src="{{ asset('frontend/img/d1.jpg') }}" alt="images">
+                                <a href="#">
+                                    <img src="{{ $item->user->avatar ? '' : asset('frontend/dashboard/assets/img/faces/default.jpg') }}"
+                                        alt="images">
                                 </a>
                                 <span>{{ $item?->grade?->title }}</span>
                             </div>
                             <div class="teachers-content">
-                                <h3><a href="single-teacher.php">{{ $item->user->full_name }}</a></h3>
+                                <h3><a href="#">{{ $item->user->full_name }}</a></h3>
                                 <p>{{ $item->institute }}</p>
                                 <b><i class="las la-map-marker-alt"></i> {{ $item->address }}</b>
 

@@ -15,13 +15,20 @@ class Teacher extends Model implements Auditable
 
     protected $fillable = ['uuid', 'user_id', 'qualification_id', 'major_subject', 'institute', 'address', 'gender', 'expected_tution_fee', 'date_of_birth', 'teaching_experience', 'preferred_subjects', 'teaching_grade', 'certificate', 'citizenship', 'preferred_shift', 'preferred_time_start', 'preferred_time_end', 'additional_info', 'accept_term_condition', 'status', 'created_by', 'updated_by'];
 
+    public const TEACHING_EXPERIENCE  = [
+        '1' => 'Fresher',
+        "2" => "1-2 Years Experience",
+        "3" => "2-3 Years Experience",
+        "4" => "3-4 Years Experience",
+        "5" => "5+ Years Experience",
+    ];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function grade(): BelongsTo
+    public function qualification(): BelongsTo
     {
-        return $this->belongsTo(Grade::class, 'grade_id');
+        return $this->belongsTo(Qualification::class, 'qualification_id');
     }
 
     public function createdBy(): BelongsTo

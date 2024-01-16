@@ -29,7 +29,7 @@ class User extends Authenticatable implements Auditable
      * @var array<int, string>
      */
     protected $fillable = [
-        'uuid', 'code','type', 'username', 'mobile', 'email', 'password', 'first_name', 'middle_name', 'last_name', 'dob', 'email_verified', 'mobile_verified', 'relationship', 'status', 'referrer_url', 'avatar', 'source', 'created_by', 'updated_by'
+        'uuid', 'code', 'type', 'username', 'mobile', 'email', 'password', 'first_name', 'middle_name', 'last_name', 'dob', 'email_verified', 'mobile_verified', 'relationship', 'status', 'referrer_url', 'avatar', 'source', 'created_by', 'updated_by'
     ];
 
     /**
@@ -50,9 +50,9 @@ class User extends Authenticatable implements Auditable
         'email_verified_at' => 'datetime', 'password' => 'hashed'
     ];
 
-    public function client(): BelongsTo
+    public function student(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Student::class, 'id', 'user_id');
     }
 
     public function createdBy(): BelongsTo

@@ -26,15 +26,15 @@ class RedirectIfAuthenticated
                 }
                 return $next($request);
                 break;
-            case 'login':
-                if (Auth::guard('customer')->check()) {
-                    return redirect()->route('customer.home.index');
+            case 'student/login':
+                if (Auth::guard('student')->check()) {
+                    return redirect()->route('student.dashboard');
                 }
                 return $next($request);
                 break;
-            case 'redeem':
-                if (Auth::guard('customer')->check()) {
-                    return redirect()->route('customer.home.index');
+            case 'teacher/login':
+                if (Auth::guard('teacher')->check()) {
+                    return redirect()->route('teacher');
                 }
                 return $next($request);
                 break;

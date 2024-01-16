@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Helpers\LayoutHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Repositories\BannerRepository;
 use App\Repositories\SubjectRepository;
 use Illuminate\Http\Request;
@@ -25,12 +26,28 @@ class HomeController extends Controller
         $subjects = $this->subject->dataProvider($request, false);
         $blocks = LayoutHelper::blocks();
         $students = Student::all();
+        $teachers = Teacher::all();
         $data = [
             'banners' => $banners,
             'blocks' => $blocks,
             'subjects' => $subjects,
             'students' => $students,
+            'teachers' => $teachers,
         ];
         return view('frontend.index', $data);
+    }
+    public function teacherList(Request $request)
+    {
+        $teachers = Teacher::all();
+
+        return view('frontend.teachers', compact('teachers'));
+    }
+    public function teacherProfile($slug)
+    {
+        $teacher = Teacher::where('slug', $slug)->first();
+        if (!$teacher) {
+            abort(404);
+        }
+        return view('frontend.single-teacher', compact('teacher'));
     }
 }
