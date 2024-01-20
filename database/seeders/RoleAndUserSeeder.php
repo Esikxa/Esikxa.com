@@ -26,7 +26,7 @@ class RoleAndUserSeeder extends Seeder
             ]
         ];
         $userList = [
-            ['code' => 'AD-0000001', 'first_name' => 'Super Admin', 'username' => 'superadmin@naresh.com', 'email' => 'superadmin@naresh.com', 'password' => Hash::make('password'), 'type' => 1, 'email_verfified' => 1, 'email_verified_at' => now()]
+            ['code' => 'AD-0000001', 'first_name' => 'Super Admin', 'username' => 'superadmin@esikshya.com', 'email' => 'superadmin@esikshya.com', 'password' => Hash::make('password'), 'type' => 1, 'email_verfified' => 1, 'email_verified_at' => now()]
         ];
         $users = User::get()->pluck('email')->toArray();
 
