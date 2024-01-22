@@ -37,6 +37,10 @@
                                 </h3>
                                 <p>{{ $item?->qualification?->title }}</p>
                                 <b><i class="las la-map-marker-alt"></i> {{ $item->address }}</b>
+                                <div class="request-teacher">
+                                    <a href="{{ route('student.request-tutor', $item->slug) }}" tabindex="0">Request a
+                                        Tutor</a>
+                                </div>
                             </div>
                         </div>
                     </div>

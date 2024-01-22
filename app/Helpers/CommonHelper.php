@@ -73,4 +73,27 @@ class CommonHelper
         }
         return $string = strip_tags($string);
     }
+    public static function requestTutorStatus($status)
+    {
+        switch ($status) {
+            case ConstantHelper::REQUEST_TUTOR_PENDING:
+                return 'PENDING';
+            case ConstantHelper::REQUEST_TUTOR_ADMIN_APPROVED:
+                return 'ADMIN APPROVED';
+            case ConstantHelper::REQUEST_TUTOR_ADMIN_CANCELLED:
+                return 'ADMIN CANCELLED';
+            case ConstantHelper::REQUEST_TUTOR_TEACHER_APPROVED:
+                return 'TEACHER APPROVED';
+            case ConstantHelper::REQUEST_TUTOR_TEACHER_CANCELLED:
+                return 'TEACHER CANCELLED';
+            case ConstantHelper::REQUEST_TUTOR_ONGOING:
+                return 'ONGOING';
+            case ConstantHelper::REQUEST_TUTOR_COMPLETED:
+                return 'COMPLETED';
+            case ConstantHelper::REQUEST_TUTOR_STUDENT_CANCELLED:
+                return 'STUDENT CANCELLED';
+            default:
+                return 'PENDING';
+        }
+    }
 }

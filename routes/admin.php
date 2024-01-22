@@ -35,6 +35,22 @@ Route::group(['middleware' => ['auth:admin']], function () {
     });
     Route::resource('student', 'StudentController');
 
+    Route::prefix('teacher')->group(function () {
+        Route::get('/change-status/{id}', ['uses' => 'TeacherController@changeStatus', 'as' => 'teacher.change-status']);
+        Route::get('/trash', ['uses' => 'TeacherController@trash', 'as' => 'teacher.trash']);
+        Route::get('/restore/{id}', ['uses' => 'TeacherController@restore', 'as' => 'teacher.restore']);
+        Route::get('/force-delete/{id}', ['uses' => 'TeacherController@forceDelete', 'as' => 'teacher.force-delete']);
+    });
+    Route::resource('teacher', 'TeacherController');
+
+    Route::prefix('request-tutor')->group(function () {
+        Route::get('/change-status/{id}', ['uses' => 'RequestTutorController@changeStatus', 'as' => 'request-tutor.change-status']);
+        Route::get('/trash', ['uses' => 'RequestTutorController@trash', 'as' => 'request-tutor.trash']);
+        Route::get('/restore/{id}', ['uses' => 'RequestTutorController@restore', 'as' => 'request-tutor.restore']);
+        Route::get('/force-delete/{id}', ['uses' => 'RequestTutorController@forceDelete', 'as' => 'request-tutor.force-delete']);
+    });
+    Route::resource('request-tutor', 'RequestTutorController');
+
     Route::prefix('banner')->group(function () {
         Route::get('/change-status/{id}', ['uses' => 'BannerController@changeStatus', 'as' => 'banner.change-status']);
         Route::get('/trash', ['uses' => 'BannerController@trash', 'as' => 'banner.trash']);
@@ -43,6 +59,14 @@ Route::group(['middleware' => ['auth:admin']], function () {
     });
 
     Route::resource('banner', 'BannerController');
+    Route::prefix('contact')->group(function () {
+        Route::get('/change-status/{id}', ['uses' => 'ContactController@changeStatus', 'as' => 'contact.change-status']);
+        Route::get('/trash', ['uses' => 'ContactController@trash', 'as' => 'contact.trash']);
+        Route::get('/restore/{id}', ['uses' => 'ContactController@restore', 'as' => 'contact.restore']);
+        Route::get('/force-delete/{id}', ['uses' => 'ContactController@forceDelete', 'as' => 'contact.force-delete']);
+    });
+
+    Route::resource('contact', 'ContactController');
     Route::resource('layout-option', 'LayoutOptionController');
     Route::resource('site-setting', 'SiteSettingController');
 

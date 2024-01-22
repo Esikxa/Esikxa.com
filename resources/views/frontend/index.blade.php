@@ -130,7 +130,7 @@
         <div class="container">
             <div class="main-title">
                 <h3>Greatest Teachers</h3>
-                <a href="#">View all teachers <i class="las la-arrow-circle-right"></i></a>
+                <a href="{{route('frontend.teacher.list')}}">View all teachers <i class="las la-arrow-circle-right"></i></a>
             </div>
             <div class="teacher-carousel">
                 @foreach ($teachers as $item)

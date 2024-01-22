@@ -64,6 +64,27 @@
       ]
     },
     {
+      "url": "/admin/teacher",
+      "name": "Teacher",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "teacher",
+      "permission": [
+        "view-teacher"
+      ]
+    },
+    {
+      "menuHeader": "Query Management"
+    },
+    {
+      "url": "/admin/request-tutor",
+      "name": "Request Tutor",
+      "icon": "menu-icon tf-icons ti ti-message",
+      "slug": "request-tutor",
+      "permission": [
+        "view-request-tutor"
+      ]
+    },
+    {
       "menuHeader": "Security"
     },
     {

@@ -182,12 +182,10 @@
                     <tr>
                         <th>S.No.</th>
                         <th>Name</th>
-                        <th>Client</th>
-                        <th>Subscriber ID</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th class="text-center" width="180">Actions</th>
+                        {{-- <th class="text-center" width="180">Actions</th> --}}
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -200,8 +198,6 @@
                             <tr>
                                 <td>{{ $dataProvider->firstItem() + $key }}</td>
                                 <td>{{ $data?->full_name }}</td>
-                                <td>{{ $data?->client?->title }}</td>
-                                <td>{{ $data?->subscriber_id }}</td>
                                 <td>{{ $data?->mobile }}</td>
                                 <td><strong>{{ $data->email }}</strong> </td>
                                 <td><span
@@ -210,17 +206,17 @@
                                         title="Change Status">{{ $data->status == 1 ? 'Active' : 'Inactive' }}</span>
                                 </td>
                                 <td class="text-center">
-                                    @can('admin-access-policy.perform', 'edit-student')
+                                    {{-- @can('admin-access-policy.perform', 'edit-student')
                                         <a class="btn btn-icon btn-primary"
                                             href="{{ route('admin.student.edit', $data->uuid) }}"><i
                                                 class="ti ti-pencil"></i></a>
-                                    @endcan
-                                    @can('admin-access-policy.perform', 'delete-student')
+                                    @endcan --}}
+                                    {{-- @can('admin-access-policy.perform', 'delete-student')
                                         <a class="btn btn-icon btn-danger btn-delete" href="javascript:void(0);"
                                             data-action="{{ route('admin.student.destroy', $data->uuid) }}"><i
                                                 class="ti ti-trash"></i>
                                         </a>
-                                    @endcan
+                                    @endcan --}}
                                 </td>
                             </tr>
                         @endforeach

@@ -238,7 +238,26 @@ class ModuleSeeder extends Seeder
                     ],
 
                 ]
-            ]
+            ],
+            [
+
+                'title' => 'Request Tutor',
+                'permissions' => [
+                    [
+
+                        'title' => 'View Request Tutor'
+                    ],
+                    [
+                        'title' => 'Edit Request Tutor'
+                    ],
+                    [
+                        'title' => 'Delete Request Tutor'
+                    ],
+                    [
+                        'title' => 'Change Status Request Tutor'
+                    ]
+                ]
+            ],
         ];
         $dbModules = Module::pluck('title')->toArray();
         $dbPermissions = Permission::pluck('title')->toArray();
