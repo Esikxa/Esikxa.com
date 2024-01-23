@@ -31,7 +31,7 @@
                                 </a>
                             </div>
                             <div class="teachers-content">
-                                <span>{{ App\Models\Teacher::TEACHING_EXPERIENCE[$item->teaching_experience] }}</span>
+                                <span>{{ App\Models\Teacher::TEACHING_EXPERIENCE[$item->teaching_experience] ?? '' }}</span>
                                 <h3><a
                                         href="{{ route('frontend.teacher.profile', $item->slug) }}">{{ $item->user->full_name }}</a>
                                 </h3>
