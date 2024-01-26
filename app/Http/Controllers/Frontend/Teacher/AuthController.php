@@ -50,6 +50,8 @@ class AuthController extends Controller
         ]);
         try {
             DB::beginTransaction();
+            $password = Str::random(8);
+
             $user_data = [
                 'first_name' => $request->first_name,
                 'middle_name' => $request->middle_name,
@@ -57,7 +59,7 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'username' => $request->email,
                 'mobile' => $request->mobile,
-                'password' => Hash::make('password'),
+                'password' => Hash::make($password),
                 'type' => ConstantHelper::USER_TYPE_TEACHER,
 
             ];
@@ -90,6 +92,17 @@ class AuthController extends Controller
                     $teacher_data['citizenship'] = $filelocation['storage'];
                 }
                 Teacher::create($teacher_data);
+            }
+            $content =   'Dear ' . $user->full_name . ',' .
+                '<br/><br/>' .
+                'Your login details for ' . config('settings.site_name') . '. Click <a href="' . route('teacher.login') . '">here</a> to login.' . '<br/>' .
+                'Email: ' . $user->email . '<br/>' .
+                'Password: ' . $password .
+                '<br/><br/>
+        Regards, <br/>' .
+                config('settings.site_name');
+            if ($user->email) {
+                EmailHelper::sendEmail($user->email, 'Account Registration', $content);
             }
             DB::commit();
             return redirect()->route('teacher.login')->with('success', 'The account has been created successfully');
@@ -151,12 +164,12 @@ class AuthController extends Controller
 
     public function forgetPasswordView()
     {
-        return view('auth.forget');
+        return view('frontend.teacher.auth.forget');
     }
     public function forgetPassword(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email:rfc,dns|exists:users,email,type,3,status,1',
+            'email' => 'required|email:rfc,dns|exists:users,email,type,2,status,1',
         ]);
         $token = Str::random(64);
         DB::table('password_reset_tokens')->where('email', $request->email)->delete();
@@ -170,7 +183,7 @@ class AuthController extends Controller
         <p>Hello,</p>
         <p>You are receiving this email because we received a password reset request for your account.</p>
         <p>
-            <a href=" . route('reset.password', $token) . ">Click here to reset your password</a>
+            <a href=" . route('teacher.reset.password', $token) . ">Click here to reset your password</a>
         </p>
         <p>If you did not request a password reset, no further action is required.</p>";
 
@@ -188,7 +201,7 @@ class AuthController extends Controller
         if (!$data) {
             abort(404);
         }
-        return view('auth.reset', ['data' => $data]);
+        return view('frontend.teacher.auth.reset', ['data' => $data]);
     }
 
     public function resetPassword(Request $request, $token)
@@ -202,7 +215,7 @@ class AuthController extends Controller
         if (!$data) {
             return redirect()->route('admin.auth.forget.password')->with('error', 'Link might be broken please try again');
         }
-        $user = User::where('email', $data->email)->where('type', 3)->first();
+        $user = User::where('email', $data->email)->where('type', 2)->first();
         if (!$user) {
             return back()->with('error', 'Detail not found!');
         }
@@ -213,7 +226,7 @@ class AuthController extends Controller
             ]);
             DB::table('password_reset_tokens')->where('token', $token)->delete();
             DB::commit();
-            return redirect()->route('login.view')->with('success', 'Password reset successfully');
+            return redirect()->route('teacher.login')->with('success', 'Password reset successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Something went wrong, please try again');

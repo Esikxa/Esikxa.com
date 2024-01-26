@@ -315,6 +315,8 @@
             }).on('change', updateOutput);
             $('.remove-item').on('click', function() {
                 $object = $(this);
+                var url = $(this).data('action');
+
                 var id = $object.closest('li').data('id');
                 var menu = "{{ $menu->id }}";
                 Swal.fire({
@@ -328,11 +330,13 @@
                     if (result.value) {
                         $.ajax({
                             type: "POST",
-                            url: baseUrl + "/system-user/menu/" + menu + "/menu-item/" + id,
+                            url: url,
                             data: {
-                                id: id,
                                 _method: 'DELETE'
                             },
+                            headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
                             success: function(response) {
                                 Swal.fire("Deleted!", response.message, "success");
                                 $object.closest('li').remove();
@@ -501,7 +505,7 @@
                                             <a href="{{ route('admin.menu.menu-item.edit', ['menu' => $menu->id, 'menu_item' => $item['id']]) }}"
                                                 class="btn btn-sm btn-primary waves-effect" data-bs-toggle="tooltip"
                                                 data-bs-original-title="Edit"><i class="ti ti-pencil"></i></a>
-                                            <a class="btn btn-sm btn-danger remove-item waves-effect" data-action=""
+                                            <a class="btn btn-sm btn-danger remove-item waves-effect"  data-action="{{ route('admin.menu.menu-item.destroy', ['menu' => $menu->id, 'menu_item' => $item['id']]) }}"
                                                 data-bs-toggle="tooltip" data-bs-original-title="Trash"><i
                                                     class="ti ti-trash"></i></a></span>
 

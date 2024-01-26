@@ -20,10 +20,10 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/login', [AuthController::class, 'loginView'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/forget-password', [AuthController::class, 'forgetPasswordView'])->name('forget..password');
-    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget..password');
+    Route::get('/forget-password', [AuthController::class, 'forgetPasswordView'])->name('forget.password');
+    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget.password');
     Route::get('/reset-password/{tokem}', [AuthController::class, 'resetPasswordView'])->name('reset.password');
-    Route::post('/reset-password/{token}', [AuthController::class, 'resetPassword']);
+    Route::post('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('reset.password');
 });
 
 Route::middleware(['auth:student'])->group(function () {

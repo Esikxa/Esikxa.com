@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width">
@@ -172,10 +172,10 @@
     </style>
 </head>
 
-<body bgcolor="#f6f6f6">
+<body bgcolor="#ff693d">
 
 <!-- body -->
-<table class="body-wrap" bgcolor="#f6f6f6">
+<table class="body-wrap" bgcolor="#ff693d">
     <tr>
         <td></td>
         <td class="container" bgcolor="#FFFFFF">
@@ -222,39 +222,9 @@
         <td></td>
     </tr>
 </table>
-<!-- /footer --> --}}
+<!-- /footer -->
 
 </body>
 
 </html>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Health Yaad Aayo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        p {
-            margin-top: 0;
-        }
-    </style>
-</head>
-
-<body style="background: #622b8c; font-family: arial;">
-    <div
-        style="background: #fff; width: 600px; margin: auto; border-radius: 15px; margin-top: 50px; padding-top:20px; margin-bottom: 50px;">
-        <div style="text-align: center; border-bottom: 1px solid #622b8c;padding-bottom:15px;  "><a
-                href="https://checkup.healthyaadaayo.com/" target="_blank"><img
-                    src="https://checkup.healthyaadaayo.com/frontend/images/logo.png" style="width:250px"> </a></div>
-        <div style="padding:40px 45px 0px 45px">
-            {!! $content !!}
-            <br>
-            <br>
-            <div style="line-height:0;text-align: center;"><img src="https://checkup.healthyaadaayo.com/frontend/images/login-img.svg"
-                    style="width:90%"></div>
-        </div>
-    </div>
-</body>
-
-</html>

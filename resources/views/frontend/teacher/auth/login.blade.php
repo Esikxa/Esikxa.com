@@ -1,5 +1,5 @@
 @extends('frontend.layout.app')
-@section('title', 'Teacher Login')
+@section('title', 'Login |Teacher')
 @section('content')
     @include('admin._partials.alert')
     <section class="auth-page">
@@ -41,7 +41,7 @@
                                 <label for="remember">Remember me</label>
                             </div>
                             <div class="forgot">
-                                <a href="#">Forgot Password?</a>
+                                <a href="{{route('teacher.forget.password')}}">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="submit-btn">

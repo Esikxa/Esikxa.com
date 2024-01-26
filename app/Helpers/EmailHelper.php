@@ -10,9 +10,9 @@ class EmailHelper
 {
     public static function sendEmail($receiverEmail, $subject, $content, $replyTo = "", $ccBCC = [])
     {
-        $logo = asset('image/health360.png');
-        $senderEmail = env('MAIL_FROM_ADDRESS', 'nareshkumar.khasu@peacenepal.com.np');
-        $senderName = env('MAIL_FROM_NAME', 'Health Yaad Aayo');
+        $logo = asset('storage/' . config('settings.logo'));
+        $senderEmail = env('MAIL_FROM_ADDRESS');
+        $senderName = env('MAIL_FROM_NAME');
         $sitePath = route('frontend.index');
         $siteName = config('settings.site_name');
 

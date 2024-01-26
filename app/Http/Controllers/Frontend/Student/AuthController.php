@@ -48,6 +48,7 @@ class AuthController extends Controller
         // dd($request->all());
         try {
             DB::beginTransaction();
+            $password = Str::random(8);
             $user_data = [
                 'first_name' => $request->first_name,
                 'middle_name' => $request->middle_name,
@@ -55,7 +56,7 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'username' => $request->email,
                 'mobile' => $request->mobile,
-                'password' => Hash::make('password'),
+                'password' => Hash::make($password),
                 'type' => ConstantHelper::USER_TYPE_STUDENT,
 
             ];
@@ -75,6 +76,17 @@ class AuthController extends Controller
                     'accept_term_condition' => $request->accept_term_condition,
                 ];
                 Student::create($student_data);
+            }
+            $content =   'Dear ' . $user->full_name . ',' .
+                '<br/><br/>' .
+                'Your login details for ' . config('settings.site_name') . '. Click <a href="' . route('student.login') . '">here</a> to login.' . '<br/>' .
+                'Email: ' . $user->email . '<br/>' .
+                'Password: ' . $password .
+                '<br/><br/>
+            Regards, <br/>' .
+                config('settings.site_name');
+            if ($user->email) {
+                EmailHelper::sendEmail($user->email, 'Account Registration', $content);
             }
             DB::commit();
             return redirect()->route('student.login')->with('success', 'The account has been created successfully');
@@ -136,7 +148,7 @@ class AuthController extends Controller
 
     public function forgetPasswordView()
     {
-        return view('student.auth.forget');
+        return view('frontend.student.auth.forget');
     }
     public function forgetPassword(Request $request)
     {
@@ -173,7 +185,7 @@ class AuthController extends Controller
         if (!$data) {
             abort(404);
         }
-        return view('student.auth.reset', ['data' => $data]);
+        return view('frontend.student.auth.reset', ['data' => $data]);
     }
 
     public function resetPassword(Request $request, $token)
@@ -198,7 +210,7 @@ class AuthController extends Controller
             ]);
             DB::table('password_reset_tokens')->where('token', $token)->delete();
             DB::commit();
-            return redirect()->route('student.login.view')->with('success', 'Password reset successfully');
+            return redirect()->route('student.login')->with('success', 'Password reset successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Something went wrong, please try again');

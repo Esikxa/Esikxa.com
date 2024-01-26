@@ -1,72 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Yaad Aayo</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('customer/images/favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('customer/css/bootstrap.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('customer/css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body class="home">
-    <div class="login-custom innerwrapper">
-        <div class="loginwrapper">
-            <div class="doc-section">
-                <div><a href="{{ route('frontend.index') }}"><img class="logowhite" src="{{ asset('customer/images/logo-white.png') }}" alt="Logo"></a></div>
-                <img src="{{ asset('customer/images/login-img.svg') }}" alt="login image">
+@extends('frontend.layout.app')
+@section('title', 'Forget Password | Teacher')
+@section('content')
+    @include('admin._partials.alert')
+    <section class="auth-page">
+        <div class="auth-bg-section"
+            style="background-image: url('https://www.pixelstalk.net/wp-content/uploads/images1/Travel-wallpapers-images-android-savers-screen-screensavers-nepal-village-gandaki-annapurna-range.jpg');">
+            <div class="auth-bg"></div>
+            <div class="shape">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 1440 120">
+                    <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
+                </svg>
             </div>
-            <div class="login-main">
-                <h2>Forget Password</h2>
-                <div class="login-txt">Please enter your registered email to reset password</div>
-                @include('customer.layouts.alert')
-                <form  method="POST">
-                    @csrf
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-                            name="email">
-                        <label for="floatingInput">Email</label>
-                    </div>
-                    <div class="mb-3 mb-4">
-                        <button type="submit" class="primary-btn w-100">Send Password Reset Link</button>
-                    </div>
-
-                </form>
-
-                <div class="login-socialmedia">
-                    <div>Follow Us</div>
-                    <ul>
-                        <li class="facebook">
-                            <a href="#!">
-                                <img src="{{ asset('customer/images/facebook.svg') }}" alt="">
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="insta">
-                            <a href="#!">
-                                <img src="{{ asset('customer/images/instagram.sv') }}g" alt="">
-                            </a>
-                        </li>
-                        <li class="linkedin">
-                            <a href="#!">
-                                <img src="{{ asset('customer/images/linkedin.svg') }}" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
-    </div>
+        <div class="auth-body-content">
+            <div class="auth-card">
+                <h3>Forget Password</h3>
+                <div class="auth-card-body">
+                    <form method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="submit-btn">
+                            <button type="submit" class="btns">Send Password Reset Link <i class="las la-sign-in-alt"></i></button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+@endsection
 
-    <!-- Scripts -->
-    <script src="{{ asset('customer/js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('customer/js/bootstrap.min.js') }}"></script>
-
-</body>
-
-</html>

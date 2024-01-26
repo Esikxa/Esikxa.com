@@ -1,5 +1,5 @@
 @extends('frontend.layout.app')
-@section('title', 'Teacher Registration')
+@section('title', 'Registration | Teacher')
 @section('content')
     @include('admin._partials.alert')
     <section class="become-teacher mt mb">
