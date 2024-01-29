@@ -41,5 +41,18 @@ class TeacherController extends Controller
         }
         return response()->json(['status' => 1, 'message' => 'Oops! access denied.'], 200);
     }
+    public function destroy(string $id)
+    {
+        $this->authorize('admin-access-policy.perform', 'delete-teacher');
+
+        if (request()->ajax()) {
+            $model = $this->teacher->findByUuid($id);
+            if ($model->delete()) {
+                return response()->json(['status' => 0, 'message' => 'The record has been deleted successfully.'], 200);
+            }
+            return response()->json(['status' => 1, 'message' => 'Oops! record cannot be deleted.'], 200);
+        }
+        return response()->json(['status' => 1, 'message' => 'Oops! access denied.'], 200);
+    }
 
 }

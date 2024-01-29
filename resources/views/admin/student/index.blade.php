@@ -211,12 +211,12 @@
                                             href="{{ route('admin.student.edit', $data->uuid) }}"><i
                                                 class="ti ti-pencil"></i></a>
                                     @endcan --}}
-                                    {{-- @can('admin-access-policy.perform', 'delete-student')
+                                    @can('admin-access-policy.perform', 'delete-student')
                                         <a class="btn btn-icon btn-danger btn-delete" href="javascript:void(0);"
                                             data-action="{{ route('admin.student.destroy', $data->uuid) }}"><i
                                                 class="ti ti-trash"></i>
                                         </a>
-                                    @endcan --}}
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

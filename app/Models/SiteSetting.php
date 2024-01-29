@@ -95,6 +95,12 @@ class SiteSetting extends Model implements Auditable
             'type' => 'general',
             'form-type' => 'text'
         ],
+        [
+            'title' => 'Short Description',
+            'slug' => 'short_introduction',
+            'type' => 'general',
+            'form-type' => 'text'
+        ],
 
     ];
 }
